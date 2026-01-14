@@ -1,79 +1,48 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-// //One Element in React
-// const heading = React.createElement(
-//     "h1", // HTML Tag
-//     {id:"heading", xyz:"abc"}, // Attributes Object
-//      "Hello, World From React!" // Content, children that goes inside the tag.
-//     ); // React Element Creation
+//JSX Element
+//JSX is not HTML. It is syntactic sugar coated over React.createElement()
+const heading = (<h1 className="heading">Hello World from React using JSX</h1>);
 
-// console.log(heading); // object representation of the React Element.
-// const root = ReactDOM.createRoot(document.getElementById("root")); // React Root Creation
-
-// //While rendering it converting object to HTML Element and putting it inside the root div.
-// root.render(heading); // Rendering React Element to the Root
-
-
-// //Nested Elements in React
-// /* 
-//      <div id="parent">
-//         <div id="child">
-//             <h1>Hello, World From React!</h1>
-//         </div>
-//      </div>
-// */
-
-
-// const parent = React.createElement(
-//     "div",
-//     {id:"parent"},
-//     React.createElement(
-//         "div",
-//         {id:"child"},
-//         React.createElement(
-//             "h1",
-//             {},
-//             "I'm a nested H1 tag"
-//         )
-//     )
-// );
-
-// console.log(parent); // object representation of the React Element.
-// const root2 = ReactDOM.createRoot(document.getElementById("root"));
-// //While rendering it converting object to HTML Element and putting it inside the root div.
-// root2.render(parent);
-
-
-
-// Creating sibling elements using React Fragments
+//React Component
+//1. Functional Component - new way
 /*
-    <div id="parent">       
-        <div id="child1">
-            <h1>Hello, World From React!</h1>
-            <h2>This is child 1</h2>
-        </div>
-        <div id="child2">
-            <h1>Hello, World From React Again!</h1>
-            <h2>This is child 2</h2>
-        </div>
-    </div>
+const HeadingComponent = () => {
+    return <h1>Hello from Functional Component</h1>;
+}
 */
-const parent2 = React.createElement(
-    "div",
-    {id:"parent"},
-    [
-        React.createElement(
-            "div",
-            {id:"child1"},
-            [React.createElement("h1",{ id:"div1h1"},"I'm the first child H1 tag"), React.createElement("h2",{id:"div1h2"},"I'm the first child H2 tag")]
-        ),
-        React.createElement(
-            "div",
-            {id:"child2"},
-            [React.createElement("h1",{ id:"div2h1"},"I'm the second child H1 tag"), React.createElement("h2",{id:"div2h2"},"I'm the second child H2 tag")]
-        )
-    ]
+//2. Class Component - old way
+/*
+class HeadingComponent extends React.Component {
+    render() {
+        return <h1>Hello from Class Component</h1>;
+    }
+}
+*/
+
+//Using Functional Component - Function component means it is a function which returns JSX
+// const jsxHeading = () => <h1 className="heading">Hello from Functional Component</h1>;
+const TitleComponent = () => (
+     <h1 className="heading">Hello from Title Component</h1>
 );
-console.log(parent2); // object representation of the React Element.
-const root3 = ReactDOM.createRoot(document.getElementById("root"));
-//While rendering it converting object to HTML Element and putting it inside the root div.
-root3.render(parent2);
+
+
+const normalVariable = (
+    <h3>This is a normal variable which contains JSX element</h3>
+);
+//component composition - combining multiple components
+//Using TitleComponent inside HeadingComponent
+//Using normal variable inside component
+const HeadingComponent = () => (
+    <div id="container">
+        <TitleComponent/> 
+        {normalVariable}  
+        //Using normal variable inside component
+        <h1 className="heading">Hello from Functional Component</h1>
+    </div>
+);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+// root.render(HeadingComponent());
+root.render(<HeadingComponent />);
