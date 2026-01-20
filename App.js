@@ -34,11 +34,17 @@ const normalVariable = (
 //component composition - combining multiple components
 //Using TitleComponent inside HeadingComponent
 //Using normal variable inside component
+//JSX will sanitize the code to avoid XSS attacks like below
+// const normalVariable = (
+//     <h3>This is a normal variable which contains JSX element <script>alert("Hacked")</script></h3>
+// );
 const HeadingComponent = () => (
     <div id="container">
         <TitleComponent/> 
+        {/* <TitleComponent></TitleComponent> */}
+        {/* {TitleComponent()} */}
         {normalVariable}  
-        //Using normal variable inside component
+        
         <h1 className="heading">Hello from Functional Component</h1>
     </div>
 );
