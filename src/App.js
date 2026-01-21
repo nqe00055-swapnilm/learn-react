@@ -1304,22 +1304,13 @@ const BodyComponent = () => {
         <button className="search-btn">Search</button>
       </div>
       <div className="restaurant-list">
-        <RestaurantCard resData={restaurantList[0]} />
-        <RestaurantCard resData={restaurantList[1]} />
-        <RestaurantCard resData={restaurantList[2]} />
-        <RestaurantCard resData={restaurantList[3]} />
-        <RestaurantCard resData={restaurantList[4]} />
-        <RestaurantCard resData={restaurantList[5]} />
-        <RestaurantCard resData={restaurantList[6]} />
-        <RestaurantCard resData={restaurantList[7]} />
-        <RestaurantCard resData={restaurantList[8]} />
-        <RestaurantCard resData={restaurantList[9]} />
-        {/* <RestaurantCard restName="KFC" cuisines="Fast Food, American" rating="4.2" deliveryTime="25 mins" restImage="https://b.zmtcdn.com/data/dish_photos/051/e802b332bf3ded54c695814fb86fa051.jpeg?fit=around|130:130&crop=130:130;*,*" />
-            <RestaurantCard restName="Burger King" cuisines="Fast Food, American" rating="4.0" deliveryTime="20 mins" restImage="https://b.zmtcdn.com/data/dish_photos/01c/c13b152416d1ebd6edd72f0c877d701c.jpeg"/>
-            <RestaurantCard restName="Domino's Pizza" cuisines="Fast Food, Italian" rating="4.1" deliveryTime="22 mins" restImage="https://b.zmtcdn.com/data/dish_photos/b58/9437c9e7155a9dca8d8f0ddf97510b58.jpeg?fit=around|130:130&crop=130:130;*,*"/>
-            <RestaurantCard restName="Subway" cuisines="Fast Food, American" rating="4.3" deliveryTime="18 mins" restImage="https://b.zmtcdn.com/data/dish_photos/932/ddfba356647bea17c645e49f1212c932.jpeg?fit=around|130:130&crop=130:130;*,*"/>
-            <RestaurantCard restName="McDonald's" cuisines="Fast Food, American" rating="4.0" deliveryTime="20 mins" restImage="https://b.zmtcdn.com/data/dish_photos/2a8/f532941b48e81908e70b42c7ee3662a8.png?fit=around|130:130&crop=130:130;*,*"/>
-            <RestaurantCard restName="Pizza Hut" cuisines="Fast Food, Italian" rating="4.2" deliveryTime="25 mins" restImage="https://b.zmtcdn.com/data/dish_photos/034/05af55eee3425c94e8117a9cb3212034.jpg"/> */}
+        {restaurantList.map((restaurant) => (
+          <RestaurantCard
+            key={restaurant.info.id}
+            resData={restaurant}
+          />    
+        ))
+        }
       </div>
     </div>
   );
